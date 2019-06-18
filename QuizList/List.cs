@@ -33,7 +33,6 @@ namespace QuizList
                 }
             }
 
-
             Console.WriteLine("입니다. 이들의 합은 {0}입니다.", sum);
         }
     }
