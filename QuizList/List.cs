@@ -23,5 +23,30 @@ namespace QuizList
 
             Console.WriteLine("1~1000 사이의 3과 5의 배수의 합은 {0}입니다.", sum);
         }
+
+        public static void quiz2()
+        {
+            // 피보나치 수열은 연속된 숫자의 합을 계속해서 붙여나갑니다.
+            // 1과 2부터 시작해서 10개까지 이어보면 다음과 같이 됩니다.
+            // ex) 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, ...
+            // 400만을 초과하지 않는 값 중에 짝수 수열의 합을 구하세요.
+
+            int preNum = 1; // 첫번째 숫자
+            int aftNum = 1; // i값을 저장할 변수
+            int result = 0;  //결과 값
+
+            for (int i = 1; i < 4000000; i = i+preNum)
+            {
+                preNum = aftNum;
+
+                if ( (i%2) == 0 )
+                {
+                    result += i;
+                }
+
+                aftNum = i;
+            }
+            Console.WriteLine(result);
+        }
     }
 }
