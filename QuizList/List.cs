@@ -10,30 +10,18 @@ namespace QuizList
     {
         public static void quiz1()
         {
-            int third = 0;
-            int fifth = 0;
+            // 3과 5의 배수 숫자의 합 구하기
+            // 1~10 사이의 3과 5의 배수는 3, 5, 6, 9입니다. 이들의 합은 23입니다. 1~1000 사이의 3과 5의 배수 합을 구하세요.
             int sum = 0;
-            Console.Write("1~10 사이의 3과 5의 배수는");
             for (int i = 1; i <= 1000; i++)
             {
-                if (i % 3 == 0)
+                if (i % 3 == 0 || i % 5 == 0)
                 {
-                    third = i;
-                    Console.Write("{0}", third);
-                    Console.Write(", ");
-                    sum += third;
-                }
-
-                else if (i % 5 == 0)
-                {
-                    fifth = i;
-                    Console.Write("{0}", fifth);
-                    Console.Write(", ");
-                    sum += fifth;
+                    sum += i;
                 }
             }
 
-            Console.WriteLine("입니다. 이들의 합은 {0}입니다.", sum);
+            Console.WriteLine("1~1000 사이의 3과 5의 배수의 합은 {0}입니다.", sum);
         }
     }
 }
