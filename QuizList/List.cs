@@ -13,7 +13,7 @@ namespace QuizList
             // 3과 5의 배수 숫자의 합 구하기
             // 1~10 사이의 3과 5의 배수는 3, 5, 6, 9입니다. 이들의 합은 23입니다. 1~1000 사이의 3과 5의 배수 합을 구하세요.
             int sum = 0;
-            for (int i = 1; i <= 1000; i++)
+            for (int i = 1; i < 1000; i++)
             {
                 if (i % 3 == 0 || i % 5 == 0)
                 {
@@ -47,6 +47,14 @@ namespace QuizList
                 aftNum = i;
             }
             Console.WriteLine(result);
+        }
+
+        public static void quiz3()
+        {
+            // 13195의 소인수는 5, 7, 13, 29 입니다.
+            // 600851475143 의 최대 소인수는 무엇입니까?
+
+
         }
     }
 }
