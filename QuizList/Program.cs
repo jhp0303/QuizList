@@ -10,7 +10,7 @@ namespace QuizList
     {
         static void Main(string[] args)
         {
-            List.quiz2();
+            List.quiz3();
             Console.ReadLine();
         }
     }

@@ -53,8 +53,38 @@ namespace QuizList
         {
             // 13195의 소인수는 5, 7, 13, 29 입니다.
             // 600851475143 의 최대 소인수는 무엇입니까?
-
-
+            long result = GetMaxPrimeValue();
+            Console.WriteLine("600851475143의 최대 소인수는 {0} 입니다.", result);
         }
+        static long GetMaxPrimeValue() // quiz3에 사용되는 소인수 구하는 함수
+        {
+            long value = 600851475143;
+            long checkValue = 2;
+            long maxPrimeValue = 0;
+
+            while (checkValue * checkValue <= value)
+            {
+                if (value % checkValue == 0)
+                {
+                    maxPrimeValue = checkValue;
+                    while (value % checkValue == 0)
+                    {
+                        value /= checkValue;
+                    }
+                }
+                else
+                {
+                    checkValue++;
+                }
+            }
+            if (value > maxPrimeValue)
+            {
+                maxPrimeValue = value;
+            }
+
+            return maxPrimeValue;
+        }
+
+
     }
 }
