@@ -199,21 +199,27 @@ namespace QuizList
             int horizontal = 0;
             int verticality = 0;
             int diagonal = 0;
+            int re_diagonal = 0;
             int max_horizontal = 0;
             int max_verticality = 0;
             int max_diagonal = 0;
+            int max_re_diagonal = 0;
             int max_number = 0;
             for (int i = 0; i <= grid.GetLength(0); i++)
             {
                 for (int j = 0; j <= grid.GetLength(1); j++)
                 {
-                    if ( i <= 19 && j <= 16)
+                    if ( i <= 19 && j <= 16)    // [y, x]
                     {
                         horizontal = grid[i, j] * grid[i, j + 1] * grid[i, j + 2] * grid[i, j + 3];
                         verticality = grid[j, i] * grid[j + 1, i] * grid[j + 2, i] * grid[j + 3, i];
-                        if (i < 17 && j < 16)
+                        if ( i <= 16 && j <= 16)
                         {
                             diagonal = grid[i, j] * grid[i + 1, j + 1] * grid[i + 2, j + 2] * grid[i + 3, j + 3];
+                        }
+                        if ( 3 < i && j <= 16)
+                        {
+                            re_diagonal = grid[i, j] * grid[i - 1, j + 1] * grid[i - 2, j + 2] * grid[i - 3, j + 3];
                         }
                         
                         if (max_horizontal < horizontal)
@@ -228,6 +234,10 @@ namespace QuizList
                         {
                             max_diagonal = diagonal;
                         }
+                        if (max_re_diagonal < re_diagonal)
+                        {
+                            max_re_diagonal = re_diagonal;
+                        }
 
                     }
                 }
@@ -239,11 +249,25 @@ namespace QuizList
 
                 if (max_number < max_diagonal)
                 {
-                    Console.WriteLine("최대값: {0}", max_diagonal);
+                    if (max_diagonal < max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_re_diagonal);
+                    }
+                    else if (max_diagonal > max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_diagonal);
+                    }
                 }
                 else if (max_number > max_diagonal)
                 {
-                    Console.WriteLine("최대값: {0}", max_number);
+                    if (max_number < max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_re_diagonal);
+                    }
+                    else if (max_number > max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_diagonal);
+                    }
                 }
             }
             else if (max_verticality > max_horizontal)
@@ -252,13 +276,32 @@ namespace QuizList
 
                 if (max_number < max_diagonal)
                 {
-                    Console.WriteLine("최대값: {0}", max_diagonal);
+                    if (max_diagonal < max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_re_diagonal);
+                    }
+                    else if (max_diagonal > max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_diagonal);
+                    }
                 }
                 else if (max_number > max_diagonal)
                 {
-                    Console.WriteLine("최대값: {0}", max_number);
+                    if (max_number < max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_re_diagonal);
+                    }
+                    else if (max_number > max_re_diagonal)
+                    {
+                        Console.WriteLine("최대값: {0}", max_diagonal);
+                    }
                 }
             }
+        }
+
+        public static void Quiz7()
+        {
+
         }
     }
 }
