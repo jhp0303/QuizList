@@ -300,8 +300,59 @@ namespace QuizList
         }
 
         public static void Quiz7()
-        {
+        {   //21124
+            string[] num = new[] {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
+                                     "eleven", "tweleve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty" };
+            string[] num_ten  =  {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
+            string and = "and";
+            string hundred = "hundred";
+            int comparison = 0;
+
+            for (int i = 1; i <= 1000; i++)
+            {
+                if (i <= 20)
+                {
+                    comparison += num[i].Length;
+                }
+
+                else if (i > 20 && i < 100)
+                {
+                    comparison += num_ten[i / 10 % 10].Length + num[i % 10].Length;
+                }
+
+                else if (i >= 100 && i < 1000)
+                {
+                    if (i/10%10 == 1)
+                    {
+                        comparison += num[i / 100].Length + hundred.Length + and.Length + num[i % 100].Length;
+                    }
+                    else if (i%100 == 0)
+                    {
+                        comparison += num[i / 100].Length + hundred.Length;
+                    }
+                    else
+                    {
+                        comparison += num[i / 100].Length + hundred.Length + and.Length + num_ten[i / 10 % 10].Length + num[i % 10].Length;
+                    }
+                }
+                
+                else
+                {
+                    comparison += "thousand".Length;
+                }
+                
+                Console.WriteLine(comparison);
+            }
+
+            Console.WriteLine("Word Count: {0}", comparison);
 
         }
+
+        public static void Quiz8()
+        {
+
+
+        }
+    
     }
 }
