@@ -209,19 +209,19 @@ namespace QuizList
             {
                 for (int j = 0; j <= grid.GetLength(1); j++)
                 {
-                    if ( i <= 19 && j <= 16)    // [y, x]
+                    if (i <= 19 && j <= 16)    // [y, x]
                     {
                         horizontal = grid[i, j] * grid[i, j + 1] * grid[i, j + 2] * grid[i, j + 3];
                         verticality = grid[j, i] * grid[j + 1, i] * grid[j + 2, i] * grid[j + 3, i];
-                        if ( i <= 16 && j <= 16)
+                        if (i <= 16 && j <= 16)
                         {
                             diagonal = grid[i, j] * grid[i + 1, j + 1] * grid[i + 2, j + 2] * grid[i + 3, j + 3];
                         }
-                        if ( 3 < i && j <= 16)
+                        if (3 < i && j <= 16)
                         {
                             re_diagonal = grid[i, j] * grid[i - 1, j + 1] * grid[i - 2, j + 2] * grid[i - 3, j + 3];
                         }
-                        
+
                         if (max_horizontal < horizontal)
                         {
                             max_horizontal = horizontal;
@@ -312,7 +312,7 @@ namespace QuizList
             int EIGHT = 5;
             int NINE = 4;
 
-            int[] A = { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
+            int[] A = { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };   // 일의 자리
 
             int TEN = 3;
             int ELEVEN = 6;
@@ -325,7 +325,7 @@ namespace QuizList
             int EIGHTEEN = 8;
             int NINETEEN = 8;
 
-            int[] B = { TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN };
+            int[] B = { TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN }; // 십의 자리
 
             int TWENTY = 6;
             int THIRTY = 6;
@@ -336,7 +336,7 @@ namespace QuizList
             int EIGHTY = 6;
             int NINETY = 6;
 
-            int[] C = { ZERO, ZERO, TWENTY, THIRTY, FORTY, FIFTY, SIXTY, SEVENTY, EIGHTY, NINETY };
+            int[] C = { ZERO, ZERO, TWENTY, THIRTY, FORTY, FIFTY, SIXTY, SEVENTY, EIGHTY, NINETY }; // 백의 자리
 
             int HUNDRED = 7;
             int ONE_THOUSAND = 11;
@@ -439,8 +439,568 @@ namespace QuizList
 
         public static void Quiz8()
         {
-            
+            for (int year = 1900; year <= 1999; year++)
+            {
+                if (year / 400 == 0)
+                {
+                    Month.LeapMonth();
+                }
+
+                else
+                {
+                    Month.NoLeapMonth();
+                }
+
+            }
+
         }
-    
+
+        class Month
+        {
+            public static void NoLeapMonth()
+            {
+                string[] day = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+                string today = "";
+                int preday = 0;
+                int nextday = 0;
+
+                for (int jan = 1; jan <= 31; jan++)
+                {
+                    if (1 <= jan && jan <= 7)
+                    {
+                        if (jan + preday > 7)
+                        {
+                            today = day[jan + preday - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + jan];
+                        }
+
+                    }
+                    else
+                    {
+                        today = day[(jan + preday) % 7];
+                        nextday = (jan + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int feb = 1; feb <= 28; feb++)
+                {
+                    if (1 <= feb && feb <= 7)
+                    {
+                        if (feb + preday > 7)
+                        {
+                            today = day[(feb + preday) - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + feb];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(feb + preday) % 7];
+                        nextday = (feb + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int mar = 1; mar <= 31; mar++)
+                {
+                    if (1 <= mar && mar <= 7)
+                    {
+                        if (mar + preday > 7)
+                        {
+                            today = day[(mar + preday) - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + mar];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(mar + preday) % 7];
+                        nextday = (mar + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int apr = 1; apr <= 30; apr++)
+                {
+                    if (1 <= apr && apr <= 7)
+                    {
+                        if (apr + preday > 7)
+                        {
+                            today = day[((apr + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + apr];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + apr) % 7];
+                        nextday = (preday + apr) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int may = 1; may <= 31; may++)
+                {
+                    if (1 <= may && may <= 7)
+                    {
+                        if (may + preday > 7)
+                        {
+                            today = day[((may + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + may];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + may) % 7];
+                        nextday = (preday + may) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int jun = 1; jun <= 30; jun++)
+                {
+                    if (1 <= jun && jun <= 7)
+                    {
+                        if (jun + preday > 7)
+                        {
+                            today = day[((jun + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + jun];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + jun) % 7];
+                        nextday = (preday + jun) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int jul = 1; jul <= 31; jul++)
+                {
+                    if (1 <= jul && jul <= 7)
+                    {
+                        if (jul + preday > 7)
+                        {
+                            today = day[((jul + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + jul];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + jul) % 7];
+                        nextday = (preday + jul) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int aug = 1; aug <= 31; aug++)
+                {
+                    if (1 <= aug && aug <= 7)
+                    {
+                        if (aug + preday > 7)
+                        {
+                            today = day[((aug + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + aug];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + aug) % 7];
+                        nextday = (preday + aug) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int sep = 1; sep <= 30; sep++)
+                {
+                    if (1 <= sep && sep <= 7)
+                    {
+                        if (sep + preday > 7)
+                        {
+                            today = day[((sep + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + sep];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + sep) % 7];
+                        nextday = (preday + sep) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int oct = 1; oct <= 31; oct++)
+                {
+                    if (1 <= oct && oct <= 7)
+                    {
+                        if (oct + preday > 7)
+                        {
+                            today = day[((oct + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + oct];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + oct) % 7];
+                        nextday = (preday + oct) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int nov = 1; nov <= 30; nov++)
+                {
+                    if (1 <= nov && nov <= 7)
+                    {
+                        if (nov + preday > 7)
+                        {
+                            today = day[((nov + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + nov];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + nov) % 7];
+                        nextday = (preday + nov) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int dec = 1; dec <= 31; dec++)
+                {
+                    if (1 <= dec && dec <= 7)
+                    {
+                        if (dec + preday > 7)
+                        {
+                            today = day[((dec + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + dec];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + dec) % 7];
+                        nextday = (preday + dec) % 7;
+                    }
+                }
+                preday = nextday;
+            }
+
+            public static void LeapMonth()
+            {
+                string[] day = { "Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun" };
+                string today = "";
+                int preday = 0;
+                int nextday = 0;
+
+                for (int jan = 1; jan <= 31; jan++)
+                {
+                    if (1 <= jan && jan <= 7)
+                    {
+                        if (jan + preday > 7)
+                        {
+                            today = day[jan + preday - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + jan];
+                        }
+
+                    }
+                    else
+                    {
+                        today = day[(jan + preday) % 7];
+                        nextday = (jan + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int feb = 1; feb <= 29; feb++)
+                {
+                    if (1 <= feb && feb <= 7)
+                    {
+                        if (feb + preday > 7)
+                        {
+                            today = day[(feb + preday) - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + feb];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(feb + preday) % 7];
+                        nextday = (feb + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int mar = 1; mar <= 31; mar++)
+                {
+                    if (1 <= mar && mar <= 7)
+                    {
+                        if (mar + preday > 7)
+                        {
+                            today = day[(mar + preday) - 7];
+                        }
+                        else
+                        {
+                            today = day[preday + mar];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(mar + preday) % 7];
+                        nextday = (mar + preday) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int apr = 1; apr <= 30; apr++)
+                {
+                    if (1 <= apr && apr <= 7)
+                    {
+                        if (apr + preday > 7)
+                        {
+                            today = day[((apr + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + apr];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + apr) % 7];
+                        nextday = (preday + apr) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int may = 1; may <= 31; may++)
+                {
+                    if (1 <= may && may <= 7)
+                    {
+                        if (may + preday > 7)
+                        {
+                            today = day[((may + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + may];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + may) % 7];
+                        nextday = (preday + may) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int jun = 1; jun <= 30; jun++)
+                {
+                    if (1 <= jun && jun <= 7)
+                    {
+                        if (jun + preday > 7)
+                        {
+                            today = day[((jun + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + jun];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + jun) % 7];
+                        nextday = (preday + jun) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int jul = 1; jul <= 31; jul++)
+                {
+                    if (1 <= jul && jul <= 7)
+                    {
+                        if (jul + preday > 7)
+                        {
+                            today = day[((jul + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + jul];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + jul) % 7];
+                        nextday = (preday + jul) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int aug = 1; aug <= 31; aug++)
+                {
+                    if (1 <= aug && aug <= 7)
+                    {
+                        if (aug + preday > 7)
+                        {
+                            today = day[((aug + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + aug];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + aug) % 7];
+                        nextday = (preday + aug) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int sep = 1; sep <= 30; sep++)
+                {
+                    if (1 <= sep && sep <= 7)
+                    {
+                        if (sep + preday > 7)
+                        {
+                            today = day[((sep + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + sep];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + sep) % 7];
+                        nextday = (preday + sep) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int oct = 1; oct <= 31; oct++)
+                {
+                    if (1 <= oct && oct <= 7)
+                    {
+                        if (oct + preday > 7)
+                        {
+                            today = day[((oct + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + oct];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + oct) % 7];
+                        nextday = (preday + oct) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int nov = 1; nov <= 30; nov++)
+                {
+                    if (1 <= nov && nov <= 7)
+                    {
+                        if (nov + preday > 7)
+                        {
+                            today = day[((nov + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + nov];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + nov) % 7];
+                        nextday = (preday + nov) % 7;
+                    }
+                }
+                preday = nextday;
+                Console.WriteLine(preday);
+
+                for (int dec = 1; dec <= 31; dec++)
+                {
+                    if (1 <= dec && dec <= 7)
+                    {
+                        if (dec + preday > 7)
+                        {
+                            today = day[((dec + preday) - 7)];
+                        }
+                        else
+                        {
+                            today = day[preday + dec];
+                        }
+                    }
+                    else
+                    {
+                        today = day[(preday + dec) % 7];
+                        nextday = (preday + dec) % 7;
+                    }
+                }
+                preday = nextday;
+            }
+        }
+
     }
 }
