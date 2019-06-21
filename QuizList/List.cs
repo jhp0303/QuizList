@@ -300,35 +300,123 @@ namespace QuizList
         }
 
         public static void Quiz7()
-        {   //21124
+        {   // 정답 : 21124
+            int ZERO = 0;
+            int ONE = 3;    // string의 크기를 숫자로 지정해줌
+            int TWO = 3;
+            int THREE = 5;
+            int FOUR = 4;
+            int FIVE = 4;
+            int SIX = 3;
+            int SEVEN = 5;
+            int EIGHT = 5;
+            int NINE = 4;
+
+            int[] A = { ZERO, ONE, TWO, THREE, FOUR, FIVE, SIX, SEVEN, EIGHT, NINE };
+
+            int TEN = 3;
+            int ELEVEN = 6;
+            int TWELVE = 6;
+            int THIRTEEN = 8;
+            int FOURTEEN = 8;
+            int FIFTEEN = 7;
+            int SIXTEEN = 7;
+            int SEVENTEEN = 9;
+            int EIGHTEEN = 8;
+            int NINETEEN = 8;
+
+            int[] B = { TEN, ELEVEN, TWELVE, THIRTEEN, FOURTEEN, FIFTEEN, SIXTEEN, SEVENTEEN, EIGHTEEN, NINETEEN };
+
+            int TWENTY = 6;
+            int THIRTY = 6;
+            int FORTY = 5;
+            int FIFTY = 5;
+            int SIXTY = 5;
+            int SEVENTY = 7;
+            int EIGHTY = 6;
+            int NINETY = 6;
+
+            int[] C = { ZERO, ZERO, TWENTY, THIRTY, FORTY, FIFTY, SIXTY, SEVENTY, EIGHTY, NINETY };
+
+            int HUNDRED = 7;
+            int ONE_THOUSAND = 11;
+            int AND = 3;
+
+            int strCount = 0;
+            for (int i = 0; i <= 1000; i++)
+            {
+                if (i < 10)
+                {
+                    strCount += A[i];   // 일의자리
+                }
+                else if (i >= 10 && i < 20)
+                {
+                    strCount += B[i % 10];  // 10~19까지의 지정된 단어
+                }
+                else if (i >= 20 && i < 100)
+                {
+                    strCount += (C[i / 10] + A[i % 10]);    // 21~99 까지의 십의 자리와 일의자리 구분
+                }
+                else if (i >= 100 && i < 1000)
+                {
+                    if (i % 100 == 0)
+                    {
+                        strCount += (A[i / 100] + HUNDRED); // 100, 200, 300 ... 백의자리만 필요함
+                    }
+                    else
+                    {
+                        if (((i / 10) % 10) == 0)   // i / 10 % 10 = 십의자리를 표현해줌 즉 101~109, 201~209 ...
+                        {
+                            strCount += (A[(i / 100)] + HUNDRED + AND + A[(i % 100)]);
+                        }
+                        else if (((i / 10) % 10) == 1)  // i / 10 % 10 = 십의자리를 표현해줌 즉 110~119, 210~219 ...
+                        {
+                            strCount += (A[(i / 100)] + HUNDRED + AND + B[((i % 100) - 10)]);
+                        }
+                        else
+                        {
+                            strCount += (A[(i / 100)] + HUNDRED + AND + C[((i / 10) % 10)] + A[(i % 10)]);
+                        }
+                    }
+                }
+                else
+                {
+                    strCount += ONE_THOUSAND;
+                }
+            }
+            Console.WriteLine("1 ~ 1000 까지의 합  : " + strCount);
+
+            /* 하다가 실패함
             string[] num = new[] {"", "one", "two", "three", "four", "five", "six", "seven", "eight", "nine", "ten",
                                      "eleven", "tweleve", "thirteen", "fourteen", "fifteen", "sixteen", "seventeen", "eighteen", "nineteen", "twenty" };
             string[] num_ten  =  {"", "", "twenty", "thirty", "forty", "fifty", "sixty", "seventy", "eighty", "ninety" };
             string and = "and";
             string hundred = "hundred";
+            string thousand = "thousand";
             int comparison = 0;
 
             for (int i = 1; i <= 1000; i++)
             {
                 if (i <= 20)
                 {
-                    comparison += num[i].Length;
+                    comparison += num[i].Length;    // 20이하의 숫자의 길이를 comparison에 중첩시켜준다.
                 }
 
                 else if (i > 20 && i < 100)
                 {
-                    comparison += num_ten[i / 10 % 10].Length + num[i % 10].Length;
+                    comparison += num_ten[i / 10 % 10].Length + num[i % 10].Length; // i / 10 % 10 = 십의자리를 표현해주고 i % 10 = 일의 자리를 표현해줌.
                 }
 
                 else if (i >= 100 && i < 1000)
                 {
-                    if (i/10%10 == 1)
+                    if (i % 100 == 0)
                     {
-                        comparison += num[i / 100].Length + hundred.Length + and.Length + num[i % 100].Length;
+                        comparison += num[i / 100].Length + hundred.Length; // 100, 200, 300 ... 백의 자리만 필요하므로 조건문 구성
                     }
-                    else if (i%100 == 0)
+                    else if (i / 10 % 10 == 1)
                     {
-                        comparison += num[i / 100].Length + hundred.Length;
+                        
+                        comparison += num[i / 100].Length + hundred.Length + and.Length + num[i % 100].Length;  // 110~119, 210~219, ... 10~19까지는 십의자리와 일의자리를 구분치않음
                     }
                     else
                     {
@@ -338,20 +426,20 @@ namespace QuizList
                 
                 else
                 {
-                    comparison += "thousand".Length;
+                    comparison += "onethousand".Length;
                 }
                 
                 Console.WriteLine(comparison);
             }
+            */
 
-            Console.WriteLine("Word Count: {0}", comparison);
+            //Console.WriteLine("Word Count: {0}", comparison);
 
         }
 
         public static void Quiz8()
         {
-
-
+            
         }
     
     }
