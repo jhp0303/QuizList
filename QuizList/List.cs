@@ -437,25 +437,32 @@ namespace QuizList
 
         }
 
+        public static int count = 0;  // 퀴즈 8에서 쓰일 정답을 담을 변수
         public static void Quiz8()
         {
-            for (int year = 1900; year <= 1999; year++)
+            int century = 0;
+            int hundredYear = 2;    // 1900년대의 매월 1일이 일요일인 경우의 수
+
+            for (int year = 1900; year <= 2000; year++)
             {
-                if (year / 400 == 0)
+                if (year / 400 == 0)    // 윤년 설정
                 {
                     Month.LeapMonth();
+
                 }
 
                 else
                 {
                     Month.NoLeapMonth();
                 }
-
+                century = count;
             }
+            int answer = century - hundredYear;
+            Console.WriteLine("20세기(1901년 1월 1일 ~ 2000년 12월 31일) 에서, 매월 1일이 일요일인 경우는 {0}입니다", answer);
 
         }
 
-        class Month
+        class Month     //Quiz 8의 길이가 길어져서 따로 떼어서 만듬
         {
             public static void NoLeapMonth()
             {
@@ -477,15 +484,26 @@ namespace QuizList
                             today = day[preday + jan];
                         }
 
+
                     }
                     else
                     {
                         today = day[(jan + preday) % 7];
                         nextday = (jan + preday) % 7;
+
                     }
+
+                    if (jan == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
+
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
+                //Console.WriteLine(preday);       // 끝나는 일이 몇번째 배열인지 출력
 
                 for (int feb = 1; feb <= 28; feb++)
                 {
@@ -505,9 +523,15 @@ namespace QuizList
                         today = day[(feb + preday) % 7];
                         nextday = (feb + preday) % 7;
                     }
+                    if (feb == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int mar = 1; mar <= 31; mar++)
                 {
@@ -527,9 +551,16 @@ namespace QuizList
                         today = day[(mar + preday) % 7];
                         nextday = (mar + preday) % 7;
                     }
+
+                    if (mar == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int apr = 1; apr <= 30; apr++)
                 {
@@ -549,9 +580,16 @@ namespace QuizList
                         today = day[(preday + apr) % 7];
                         nextday = (preday + apr) % 7;
                     }
+
+                    if (apr == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int may = 1; may <= 31; may++)
                 {
@@ -571,9 +609,16 @@ namespace QuizList
                         today = day[(preday + may) % 7];
                         nextday = (preday + may) % 7;
                     }
+
+                    if (may == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int jun = 1; jun <= 30; jun++)
                 {
@@ -593,9 +638,16 @@ namespace QuizList
                         today = day[(preday + jun) % 7];
                         nextday = (preday + jun) % 7;
                     }
+
+                    if (jun == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int jul = 1; jul <= 31; jul++)
                 {
@@ -615,9 +667,16 @@ namespace QuizList
                         today = day[(preday + jul) % 7];
                         nextday = (preday + jul) % 7;
                     }
+
+                    if (jul == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int aug = 1; aug <= 31; aug++)
                 {
@@ -637,9 +696,16 @@ namespace QuizList
                         today = day[(preday + aug) % 7];
                         nextday = (preday + aug) % 7;
                     }
+
+                    if (aug == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int sep = 1; sep <= 30; sep++)
                 {
@@ -659,9 +725,16 @@ namespace QuizList
                         today = day[(preday + sep) % 7];
                         nextday = (preday + sep) % 7;
                     }
+
+                    if (sep == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int oct = 1; oct <= 31; oct++)
                 {
@@ -681,9 +754,16 @@ namespace QuizList
                         today = day[(preday + oct) % 7];
                         nextday = (preday + oct) % 7;
                     }
+
+                    if (oct == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int nov = 1; nov <= 30; nov++)
                 {
@@ -703,9 +783,16 @@ namespace QuizList
                         today = day[(preday + nov) % 7];
                         nextday = (preday + nov) % 7;
                     }
+
+                    if (nov == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int dec = 1; dec <= 31; dec++)
                 {
@@ -725,8 +812,18 @@ namespace QuizList
                         today = day[(preday + dec) % 7];
                         nextday = (preday + dec) % 7;
                     }
+
+                    if (dec == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
+
+
             }
 
             public static void LeapMonth()
@@ -755,6 +852,14 @@ namespace QuizList
                         today = day[(jan + preday) % 7];
                         nextday = (jan + preday) % 7;
                     }
+
+                    if (jan == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
                 Console.WriteLine(preday);
@@ -777,9 +882,16 @@ namespace QuizList
                         today = day[(feb + preday) % 7];
                         nextday = (feb + preday) % 7;
                     }
+
+                    if (feb == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
+                    }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int mar = 1; mar <= 31; mar++)
                 {
@@ -793,6 +905,14 @@ namespace QuizList
                         {
                             today = day[preday + mar];
                         }
+
+                        if (mar == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -801,7 +921,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int apr = 1; apr <= 30; apr++)
                 {
@@ -815,6 +934,14 @@ namespace QuizList
                         {
                             today = day[preday + apr];
                         }
+
+                        if (apr == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -823,7 +950,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int may = 1; may <= 31; may++)
                 {
@@ -837,6 +963,14 @@ namespace QuizList
                         {
                             today = day[preday + may];
                         }
+
+                        if (may == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -845,7 +979,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int jun = 1; jun <= 30; jun++)
                 {
@@ -859,6 +992,14 @@ namespace QuizList
                         {
                             today = day[preday + jun];
                         }
+
+                        if (jun == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -867,7 +1008,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int jul = 1; jul <= 31; jul++)
                 {
@@ -881,6 +1021,14 @@ namespace QuizList
                         {
                             today = day[preday + jul];
                         }
+
+                        if (jul == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -889,7 +1037,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int aug = 1; aug <= 31; aug++)
                 {
@@ -903,6 +1050,14 @@ namespace QuizList
                         {
                             today = day[preday + aug];
                         }
+
+                        if (aug == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -911,7 +1066,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int sep = 1; sep <= 30; sep++)
                 {
@@ -925,6 +1079,14 @@ namespace QuizList
                         {
                             today = day[preday + sep];
                         }
+
+                        if (sep == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -933,7 +1095,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int oct = 1; oct <= 31; oct++)
                 {
@@ -947,6 +1108,14 @@ namespace QuizList
                         {
                             today = day[preday + oct];
                         }
+
+                        if (oct == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -955,7 +1124,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int nov = 1; nov <= 30; nov++)
                 {
@@ -969,6 +1137,14 @@ namespace QuizList
                         {
                             today = day[preday + nov];
                         }
+
+                        if (nov == 1)
+                        {
+                            if (today == "Sun")
+                            {
+                                count++;
+                            }
+                        }
                     }
                     else
                     {
@@ -977,7 +1153,6 @@ namespace QuizList
                     }
                 }
                 preday = nextday;
-                Console.WriteLine(preday);
 
                 for (int dec = 1; dec <= 31; dec++)
                 {
@@ -996,6 +1171,14 @@ namespace QuizList
                     {
                         today = day[(preday + dec) % 7];
                         nextday = (preday + dec) % 7;
+                    }
+
+                    if (dec == 1)
+                    {
+                        if (today == "Sun")
+                        {
+                            count++;
+                        }
                     }
                 }
                 preday = nextday;
