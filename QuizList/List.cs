@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -1183,6 +1184,60 @@ namespace QuizList
                 }
                 preday = nextday;
             }
+        }
+
+
+        public static void Quiz9()
+        {
+            ArrayList Num = new ArrayList();
+            int Sum = 0;
+            Num.Add(1);
+
+            for (int factorial = 1; factorial <= 100; factorial++)
+            {
+                for (int j = 0; j < Num.Count; j++)
+                {
+                    Num[j] = (int)Num[j] * factorial;
+                }
+
+                for (int j = 0; j < Num.Count; j++)
+                {
+                    if ((int)Num[j] >= 10)
+                    {
+                        if (((int)Num[j] / 100) > 0)
+                        {
+                            if (Num.Count <= (j + 1)) Num.Add(0);
+
+                            if (Num.Count <= (j + 2))
+                            {
+                                Num.Add((int)Num[j] / 100);
+                                Num[j] = (int)Num[j] % 100;
+                            }
+                            else
+                            {
+                                Num[j + 2] = (int)Num[j + 2] + ((int)Num[j] / 100);
+                                Num[j] = (int)Num[j] % 100;
+                            }
+                        }
+
+                        if (Num.Count <= (j + 1))
+                        {
+                            Num.Add((int)Num[j] / 10);
+                            Num[j] = (int)Num[j] % 10;
+                        }
+                        else
+                        {
+                            Num[j + 1] = (int)Num[j + 1] + ((int)Num[j] / 10);
+                            Num[j] = (int)Num[j] % 10;
+                        }
+                    }
+                }
+            }
+            for (int i = 0; i < Num.Count; i++)
+            {
+                Sum += (int)Num[i];
+            }
+            Console.WriteLine("100!의 자리수의 합: {0}", Sum);
         }
 
     }
