@@ -1271,5 +1271,23 @@ namespace QuizList
             Console.WriteLine("3자리를 곱해 만들 수 있는 가장 큰 대칭수: {0}", big);
         }
 
+        public static void Quiz11()
+        {
+            int sumOfSquare = 0;
+            int squareOfSum = 0;
+            int square = 1;
+            int sum = 0;
+            for (int i = 1; i <= 100; i++)
+            {
+                sum += i;   // 1~100 까지의 합
+                squareOfSum = sum * sum;    // 1~100까지의 합의 제곱                
+                square = i * i; // 1~100 까지의 제곱
+                sumOfSquare += square;  // 1~100까지의 제곱의 합
+            }
+
+
+            Console.WriteLine("1부터 100까지 자연수에 대해 합의 제곱과 제곱의 합의 차이: {0}", squareOfSum - sumOfSquare);
+        }
+
     }
 }
