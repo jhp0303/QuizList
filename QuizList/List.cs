@@ -1240,5 +1240,36 @@ namespace QuizList
             Console.WriteLine("100!의 자리수의 합: {0}", Sum);
         }
 
+        public static void Quiz10()
+        {
+            int num;
+            int big = 0;
+
+            for (int i = 100; i < 1000; i++)
+            {
+                for (int j = i; j < 1000; j++)  // 연산하는 수가 적어 j초기값을 100이나 i로 두나 큰 차이가 없다.
+                {
+                    num = i * j;
+
+                    /*가장 큰 대칭수를 찾으라 하여 자릿수를 6자리수 경우만 생각함 (범위 5~6자리임)*/ 
+
+                    if (num / 100000 == num % 10)   // 1번째와 6번째 수
+                    {
+                        if (num / 10000 % 10 == num / 10 % 10)  // 2번째와 5번째 수
+                        {
+                            if (num / 1000 % 10 == num / 100 % 10)
+                            {
+                                if (big < num)
+                                {
+                                    big = num;
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+            Console.WriteLine("3자리를 곱해 만들 수 있는 가장 큰 대칭수: {0}", big);
+        }
+
     }
 }
